@@ -129,50 +129,93 @@ Try again!
             # begins a new day once player uses all of their energy
             if self.energy <= 0:
                 player.newday()
+            # half way point that documents player's progress through year
+            if self.day == 90:
+                print(f'''
+Well, {player.name}, it looks like you've made it to the half way point of the year.
+Let's see what you have accomplished.
+''')
 
+                if player.fitness >= 25:
+                    print(f'''
+You've been training consistently in the gym and have seen improvements in your physique.
+''')
+                elif player.fitness >= 40:
+                    print(f'''
+Your hardwork has rewarded you a spot on your highschool's {random.choice(sports)} team.
+''')
+                if player.intelligence >= 25:
+                    print(f'''
+Your effort in your classes is showing, and you are maintaining a 90 QPA.
+''')
+                elif player.intelligence >= 40:
+                    print(f'''
+Your teachers are impressed with your hardwork and participation in class.
+You also attained High Honor Roll!
+''')
+                if player.reflex >= 25:
+                    print(f'''
+You started a video game club at Magnet and a lot of people join.
+''')
+                    player.friends += 5
+                print(f'''
+Your stats so far :
+- Intelligence : {player.intelligence}
+- Fitness : {player.fitness}
+- Reflex : {player.reflex}
+- # of Friends " : {player.friends}
+''')
+                break
+            # ends the simulation and game altogether. gives list of stats and friends you met during the year.
+            if self.day == 180:
+                print(f'''
+Congratulations, you have made it through freshman year. Let's see your stats.
+- Intelligence : {player.intelligence}
+- Fitness : {player.fitness}
+- Reflex : {player.reflex}
+- # of Friends " : {player.friends}
+''')
+                for x in player.friendsmade:
+                    print(x)
+                break
+# class that stores random students for socialize function
 class Friend(object):
     def __init__(self, name, town, classtype):
         self.name = name
         self.town = town
         self.classtype = classtype
-
+# used in socialize function, provides description of student and their properties
     def introduce(self):
         print(f"""You go into Mr. Nowakoski's room looking for students to talk to.
         Looks like {self.classtype} {self.name} from {self.town} wants to talk to you!""")
 
-
+# random list of students within Friend Class, used for socialize function
 friendlist = []
 for x in range(500):
     friendlist.append(Friend(random.choice(names), random.choice(towns), random.choice(classtypes)))
 
-#def start():
- #   slowprint('Welcome to the MHS Freshman year simulator. You are going to start your first day.')
- #  introduction = input('Type ok to continue >>>   ').lower()
-
-  #  if introduction == 'ok':
-   #     intro1()
 
 # introductory exposition to MHS simulation game
 print('''
 "Wow, I'm finally here." You say to yourself. The day has just begun, and you make the long walk all
 the way to the Magnet building.
     ''')
-#time.sleep(4)
+time.sleep(4)
 print('''
 Upon the security guard opening the door, lines are formed behind what looks
 like a small table.
     ''')
-#time.sleep(4)
+time.sleep(4)
 print('''
 A woman next to the table is directing incoming students,"If you are freshman, please get in line
 here behind the island! Thank you."You mind your business, walking to the end of the long freshman line.
     ''')
-#time.sleep(6)
+time.sleep(6)
 print('''
 Gradually, the line gets shorter and you are finally at the table. The woman greets you.
 You reply with an esctatic hello.
     ''')
-#time.sleep(4)
+time.sleep(4)
 
 # player chooses what to call their character
 playername = (input('''
@@ -180,26 +223,26 @@ playername = (input('''
 
 Enter Player Name :  '''))
 
-#time.sleep(2)
+time.sleep(2)
 
 print('''
 "Hmm, I cant really find your name... You know what, it might be easier if you give me the town you live in!"
     ''')
-#time.sleep(4)
+time.sleep(4)
 
 playertown = (input('''
 "So, what town are you from?"
 
 Enter Town Name : '''))
 
-#time.sleep(2)
+time.sleep(2)
 
 print(f"""
 Oh, I found them! Here's your ID and schedule, {playername} from {playertown}!
 Please go into the auditorium to wait before the morning assembly.'
     """)
 
-#time.sleep(6)
+time.sleep(6)
 
 print("""
 You walk into the room and the sound of chatting students fills the air.You notice that there
@@ -213,17 +256,17 @@ One group seems to be talking about which classes they are taking and their acad
 Apparently one of them is taking Pre Calculus and Chemistry this year! They must be really smart.
     """)
 
-#time.sleep(6)
+time.sleep(6)
 
 print("""
 Another group is talking about sports. Some of them enjoy watching sports and some have played since middleschool.
 One of them is an avid baseball player and has also played football.
     """)
 
-#time.sleep(6)
+time.sleep(6)
 
 print("""
-The last group was talking about different video games. They were arguing aboutwhat video game was their favorite;
+The last group was talking about different video games. They were arguing about what video game was their favorite;
 Call of Duty, Pokemon, Super Smash Brothers, and even Minecraft. Seemed like a heated debate.
     """)
 
@@ -247,7 +290,7 @@ You approach the group talking about academics. A freshman named Jeff was talkin
 in robotics and how there is a team at Magnet. You express your fascination in the subject and he asks for your name.
     """)
 
-    #time.sleep(6)
+        time.sleep(6)
 
         print(f"""
 'Oh, your name is {playername} and you are from {playertown}! My name's Jeff and I am from Berkeley Heights.
@@ -255,7 +298,7 @@ You should definitely join the robotics team when we are allowed to sign up.
 If you ever need any help with anything in school, I could definitely teach you a thing or two!'
     """)
 
-    #time.sleep(6)
+        time.sleep(6)
 
         print(f"""
 Jeff becomes one of your first friends at Magnet, a friendship that is sure to last. When you level up
@@ -269,7 +312,7 @@ You approach the group talking about sports. A freshman named Toran was talking 
 sprained his ankle during a football game. You talk about a similar situation you had when you played
 sports in middleschool.
     """)
-    #time.sleep(6)
+        time.sleep(6)
 
         print(f"""
 'Oh, your name is {playername} and you are from {playertown}! My name is Toran and I'm from Plainfield.
@@ -278,7 +321,7 @@ a baseball player in college and hopefully the MLB later on. If you ever want to
 I'd be happy to do that.
     """)
 
-    #time.sleep(6)
+        time.sleep(6)
 
         print("""
 Toran becomes one of your first friends at Magnet, a friendship that is sure to last. When you level up
@@ -294,14 +337,14 @@ which game is better. One of them likes Super Smash Brothers and the other likes
 You enter the conversation and talk about your interest for both games.
     """)
 
-    #time.sleep(6)
+        time.sleep(6)
 
         print("""
 The two students ignore you and keep going on their tangents about their video games.
 A student sitting around the outside of the group comes to you.
 "Don't mind them, they are both being ridiculous. It's cool to enjoy all types of games; I do too.""")
 
-    #time.sleep(6)
+        time.sleep(6)
 
         print(f"""
 Nice to meet you, {playername}. My name is Froden and I'm from Garwood.
@@ -309,7 +352,7 @@ I play soccer for my highschool team, but in my off-time I enjoy playing video g
 Well, I'd be down to play any game with you if you ask.
     """)
 
-    #time.sleep(6)
+        time.sleep(6)
 
         print(f"""
 Froden becomes one of your first friends at Magnet, a friendship that is sure to last.
@@ -325,7 +368,7 @@ Uh oh, you might have entered your group wrong. Please make your choice again.""
 # takes all of the three player inputs and creates a character with the Character class
 player = Character(playername, playertown, playertype)
 
-time.sleep(4)
+time.sleep(6)
 
 print("""
 Shortly after, the Magnet principal Mr.Rafalowski comes in and everyone begins sitting down.
@@ -333,7 +376,7 @@ He greets everyone and talks about his expectations for the upcoming year.
 He is excited to be working with the new freshman since it will be his first full 4 year graduating class at Magnet.
 """)
 
-time.sleep(6)
+time.sleep(8)
 
 print("""
 "It's going to be a long 180 days, but I know all of you are going to make something
@@ -349,32 +392,5 @@ something of yourself. The choice is yours this year, and you have 180 days to m
 """)
 # intro ends, starts game simulation of school year
 player.simulation()
-
-if player.day == 90:
-            print(f'''
-Well, {player.name}, it looks like you've made it to the half way point of the year.
-Let's see what you have accomplished.
-''')
-
-        if player.fitness >= 25:
-            print(f'''
-You've been training consistently in the gym and have seen improvements in your physique.
-''')
-        elif player.fitness >= 40:
-            print(f'''
-Your hardwork has rewarded you a spot on your highschool's {random.choice(sports)} team.
-''')
-        if player.intelligence >= 25:
-            print(f'''
-Your effort in your classes is showing, and you are maintaining a 90 QPA.
-''')
-        elif player.intelligence >= 40:
-            print(f'''
-Your teachers are impressed with your hardwork and participation in class.
-You also attained High Honor Roll!
-''')
-        if player.reflex >= 25:
-            print(f'''
-You started a video game club at Magnet and a lot of people join.
-''')
-            player.friends += 5
+# after half way point there is a break, so need to start up second half of year
+player.simulation()
