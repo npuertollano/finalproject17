@@ -10,7 +10,6 @@ students in school.
 
 MHS SIMULATOR FLOWCHART:
 https://www.draw.io/#G1WwW665beNKyBkqX-e0rnwoB5WB3l1D-Y
->>>>>>> a5414818bb9ca4f9cd0298ef5584b28a4351342d
 
 FINALPROJECT17 PRESENTATION:
 https://docs.google.com/presentation/d/1Cu1efCYcXSrPjkfxRTYpJIQcM1jHMie4UK3WSFHQGPo/edit#slide=id.g2e1ef0f526_0_45
